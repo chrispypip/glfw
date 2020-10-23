@@ -1,7 +1,6 @@
 project "GLFW"
     kind "StaticLib"
     language "C"
-    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -18,9 +17,11 @@ project "GLFW"
         "src/vulkan.c",
         "src/window.c"
     }
+
     filter "system:linux"
-        pic "on"
+        pic "On"
         systemversion "latest"
+        staticruntime "On"
 
         files
         {
@@ -43,6 +44,7 @@ project "GLFW"
 
     filter "system:windows"
         systemversion "latest"
+        staticruntime "On"
 
         files
         {
@@ -65,8 +67,8 @@ project "GLFW"
 
     filter "configurations:Debug"
         runtime "Debug"
-        symbols "on"
+        symbols "On"
 
     filter "configurations:Release"
         runtime "Release"
-        optimize "on"
+        optimize "On"
